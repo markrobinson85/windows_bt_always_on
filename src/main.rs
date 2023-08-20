@@ -26,8 +26,7 @@ fn main() -> windows_service::Result<()> {
     
     let service_access = ServiceAccess::QUERY_STATUS | ServiceAccess::STOP | ServiceAccess::DELETE;
     let service = service_manager.open_service("bt_always_on_service", service_access);
-    // let config = service.query_config()?;
-    // println!("{:#?}", config);
+    
     match service {
         Ok(_value) => {
             // Service is installed, we can run it.
@@ -69,8 +68,6 @@ fn main() -> windows_service::Result<()> {
             service.set_description("Service to keep the Bluetooth adapter turned on, even when it is turned off.")?;
         }
     }
-
-    // bt_always_on_service::run()
     
     Ok(())
 }
