@@ -2,11 +2,10 @@
 pub mod bt_always_on_service {
     use std::{
         ffi::OsString,
-        net::{IpAddr, SocketAddr, UdpSocket},
         sync::mpsc,
         time::Duration,
     };
-    use windows::{Foundation::TypedEventHandler, Devices::Radios::{Radio, RadioState}};
+    use windows::{Devices::Radios::{RadioState}};
     use windows_service::{
         define_windows_service,
         service::{
@@ -82,7 +81,7 @@ pub mod bt_always_on_service {
         loop {
             // Get the bluetooth adapter and check its state.
             task::block_on(async {
-                let mut bluetooth = hw::bt_check().await.as_ref().unwrap().clone();
+                let bluetooth = hw::bt_check().await.as_ref().unwrap().clone();
                 if bluetooth.State() == Ok(RadioState::Off) {
                     bluetooth.SetStateAsync(RadioState::On).expect("Failed to turn Bluetooth back on.");
                 }

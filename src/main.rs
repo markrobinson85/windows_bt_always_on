@@ -1,21 +1,14 @@
-#[macro_use]
-extern crate windows_service;
 
-use std::ffi::OsString;
-use std::io;
-use windows_service::service_dispatcher;
+extern crate windows_service;
 
 mod services;
 use services::bt_service::*;
-use services::bt_service::bt_always_on_service::my_service_main;
-
-use std::io::{Error, ErrorKind};
 
 // define_windows_service!(ffi_service_main, bt_service_main);
 
 #[cfg(windows)]
 fn main() -> windows_service::Result<()> {
-    use std::{ffi::OsString, error::Error};
+    use std::{ffi::OsString};
     use windows_service::{
         service::{ServiceAccess, ServiceErrorControl, ServiceInfo, ServiceStartType, ServiceType},
         service_manager::{ServiceManager, ServiceManagerAccess},

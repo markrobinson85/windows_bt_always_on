@@ -1,11 +1,5 @@
-use std::io::ErrorKind;
-
 use windows::{
-    core::*, Data::Xml::Dom::*, Win32::Foundation::*, Win32::System::Threading::*,
-    Win32::UI::WindowsAndMessaging::*,
-    Devices::Radios::{Radio, RadioKind, RadioState, RadioAccessStatus},
-    Foundation::Collections::IVectorView,
-    Foundation::TypedEventHandler,
+    Devices::Radios::{Radio, RadioKind},
     // Devices::Radios::Radios
 };
 
